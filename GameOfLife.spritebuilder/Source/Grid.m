@@ -105,7 +105,7 @@ static const int GRID_COLUMNS = 10;
     for (int i = 0; i < [_gridArray count]; i++)
     {
         //iterate through all the columns for a given row
-        for (int j = 0; [_gridArray[i] count]; j++)
+        for (int j = 0; j < [_gridArray[i] count]; j++)
         {
             //access the creature in the cell that corresponds to the current column/row
             Creature *currentCreature = _gridArray[i][j];
