@@ -98,6 +98,7 @@ static const int GRID_COLUMNS = 10;
 
 - (void)countNeighbors
 {
+    NSLog(@"counting neighbors");
     //iterate through the rows
     //note the NSArray has a method 'count' that will return the number of elements in it
     for (int i = 0; i < [_gridArray count]; i++)
