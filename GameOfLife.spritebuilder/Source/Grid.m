@@ -141,6 +141,7 @@ static const int GRID_COLUMNS = 10;
 
 - (void)updateCreatures
 {
+    NSLog(@"updating creatures");
     int numAlive = 0;
     for(int i = 0; i < [_gridArray count]; i++ )
     {
