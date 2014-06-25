@@ -21,7 +21,6 @@ static const int GRID_COLUMNS = 10;
 
 - (void)onEnter
 {
-    NSLog(@"sdasdasdasdasdasdasd");
     [super onEnter];
     
     [self setupGrid];
@@ -41,7 +40,6 @@ static const int GRID_COLUMNS = 10;
     
     // initialize the array as a blank NSMutableArray
     _gridArray = [NSMutableArray array];
-    NSLog(@"sdasdasdasdasdasdasd");
     // initialize Creatures
     for (int i = 0; i < GRID_ROWS; i++) {
         // this is how you create two dimensional arrays in Objective-C. You put arrays into arrays.
@@ -58,12 +56,31 @@ static const int GRID_COLUMNS = 10;
             _gridArray[i][j] = creature;
             
             // make creatures visible to test this method, remove this once we know we have filled the grid properly
-            creature.isAlive = YES;
+            //creature.isAlive = YES;
             
             x += _cellWidth;
         }
         
         y += _cellHeight;
     }
+}
+
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    //get the x,y coordinate of the touch
+    CGPoint touchLocation = [touch locationInNode:self];
+    
+    //get the creature at that location
+    Creature *creature = [self creatureForTouchPosition:touchLocation];
+    
+    //invert it's state - kill if it's alive; bring it back to life if it is dead
+    creature.isAlive = !creature.isAlive;
+}
+
+- (Creature *)creatureForTouchPosition:(CGPoint)touchPosition{
+    //get the row and column that was touched, return the creature inside
+    int row =  touchPosition.y / _cellHeight;
+    int column = touchPosition.x / _cellWidth;
+    return _gridArray[row][column];
 }
 @end
