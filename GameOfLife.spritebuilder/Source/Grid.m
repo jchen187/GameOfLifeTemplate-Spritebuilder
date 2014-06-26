@@ -163,6 +163,8 @@ static const int GRID_COLUMNS = 10;
                 currentCreature.isAlive = TRUE;
                 numAlive++;
             }
+            else if (currentCreature.livingNeighbors == 2)
+                {}
             else
                 currentCreature.isAlive = FALSE;
             
