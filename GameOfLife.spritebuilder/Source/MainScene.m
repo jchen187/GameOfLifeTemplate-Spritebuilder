@@ -21,6 +21,7 @@
     self = [super init];
     if (self){
         _timer = [[CCTimer alloc] init];
+        //set default values
     }
     
     return self;
